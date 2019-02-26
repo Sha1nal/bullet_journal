@@ -1,0 +1,42 @@
+Minimum Viable Working App
+------------------------------------
+
+Add notes
+    -Add to future log
+    -Add to monthly log
+    -Add to daily log
+
+View notes
+    -View index
+    -View future log
+    -View monthly log
+    -View daily log
+
+Edit Notes
+
+Change Status of Note (open/ closed)
+
+------------------------------------
+
+What is a Note?
+    A note is an object with these properties:
+        note id
+        note text
+        status:
+            open
+            closed
+        priority: rating of (1-5)
+        date created
+        due date
+        type:
+            task
+            event
+            note
+
+What is a journal?
+    A journal is the 'book' into which notes are entered. This book will consist of:
+        A future log table
+        A monthly log table
+        A daily log table
+
+------------------------------------
