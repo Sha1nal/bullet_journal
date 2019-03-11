@@ -11,8 +11,11 @@ View notes
     -View future log
     -View monthly log
     -View daily log
+    -View historical 
 
 Edit Notes
+    -Edit note text
+    -Move note to the next month or sometime in the future
 
 Change Status of Note (open/ closed)
 
@@ -27,7 +30,7 @@ What is a Note?
             closed
         priority: rating of (1-5)
         date created
-        due date
+        expiry date
         type:
             task
             event
@@ -36,7 +39,5 @@ What is a Note?
 What is a journal?
     A journal is the 'book' into which notes are entered. This book will consist of:
         A future log table
-        A monthly log table
-        A daily log table
 
 ------------------------------------
