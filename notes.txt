@@ -12,6 +12,7 @@ View notes
     -View monthly log
     -View daily log
     -View historical 
+    -View oneline (note titles)
 
 Edit Notes
     -Edit note text
@@ -22,19 +23,21 @@ Change Status of Note (open/ closed)
 ------------------------------------
 
 What is a Note?
+    key:
+        (M) - Mandatory
+        (O) - Optional
+        (A) - Automatic
+
     A note is an object with these properties:
         note id
-        note text
-        status:
-            open
-            closed
-        priority: rating of (1-5)
-        date created
-        expiry date
-        type:
-            task
-            event
-            note
+        note title (M) 
+        note text (O) 
+        type - note, event, task (M)
+        tags 
+            any optional tag (think about creating a list of tags?) (O)
+        date created (A)
+        expiry date (O)
+        url (O)
 
 What is a journal?
     A journal is the 'book' into which notes are entered. This book will consist of:
