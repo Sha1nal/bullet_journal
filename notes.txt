@@ -20,6 +20,10 @@ Edit Notes
 
 Change Status of Note (open/ closed)
 
+Add a search feature
+    -Be able to search through titles and text 
+    -Return ID and title of note
+
 ------------------------------------
 
 What is a Note?

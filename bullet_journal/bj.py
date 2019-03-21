@@ -11,15 +11,21 @@ from bj.models import Notes
 def add_note():
     title = input('Title: ')
     text = input('Body: ')
-    expiry_date = input('Due Date: ')
+    expiry_date = input('Due Date (YYYY-MM-DD): ')
     note_type = input('Note Type (N, E, T): ')
     url_field = input('URL: ')
+    
+    new_note = Notes(note_title=title, note_text=text, expiry_date=expiry_date, url=url_field, note_type=note_type)
+    new_note.save()
+    click.echo('Note saved successfully')
 
 def view_notes():
-    title_list = Notes.objects.all().values('note_title')
-    for title in title_list:
-        note_title = title['note_title']
-        print(note_title)
+    queryset = Notes.objects.all()
+    for note in queryset:
+        note_title = note.note_title
+        note_id = note.id
+
+        print(str(note_id) + ": " + note_title)
 
 @click.command()
 @click.option('--a', '--add', is_flag=True)
