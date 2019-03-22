@@ -32,9 +32,14 @@ class Notes_Notes(models.Model):
     def __str__(self):
         return self.note_text
 
+
 class Tags(models.Model):
-    tag_text = models.Charfield(max_length=20)
-    note_id = models.ForeignKey(Notes_Notes, on_delete=models.CASCADE)
+    tag_text = models.CharField(max_length=20)
 
     def __str__(self):
         return self.tag_text
+
+
+class Tag_Notes(models.Model):
+    note_id = models.ForeignKey(Notes_Notes, on_delete=models.CASCADE)
+    tag_id = models.ForeignKey(Tags, on_delete=models.CASCADE)
