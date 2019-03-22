@@ -1,0 +1,38 @@
+--------------
+Task Creation
+--------------
+Jackson needs to send out his cv before the end of the day. He calls up the bullet_journal application and runs 'bj add task "send out cv's"'. 
+Jackson is then prompted in the terminal with a message 'Task added successfully to: Task List'. 
+
+--------------
+Task Viewing
+--------------
+Jackson is at his pc when he realises he has to check is his task list to make sure things have been settled before the end of the day. He runs 'bj view tasks'.
+THe terminal is then populated with a list of tasks that need to be completed. 
+He identifies that the critical task left for the day is 'send out cv's'. 
+Jackson then proceeds to sending out his cv's.
+
+--------------
+Task Closing
+--------------
+Jackson then realises that all his tasks for the day are complete. 
+He runs 'bj close task "3"'. This closes the task with the ID: 3. 
+He then re runs 'bj view tasks'.
+The tasks that have been closed are not populated on the remaining task list.
+
+++++++++++++++
+Note Creation
+++++++++++++++
+Jackson needs to add a new note about django to his system. 
+He runs 'bj add note django 'django-admin startapp "appname"'.
+He is then shown the following message.
+'tags: django
+ message: django-admin startapp'
+ Added successfully
+
++++++++++++++
+Note Viewing
++++++++++++++
+Jackson needs to remember what the command for viewing previous git commits are on oneline.
+He runs 'bj view notes git'
+He is then shown a list of notes associated with the git tag.
