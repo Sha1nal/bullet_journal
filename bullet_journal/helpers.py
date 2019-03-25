@@ -72,10 +72,20 @@ class NoteHelper():
 
         for tag in tag_list:
             db_tags = Tags.objects.all() 
+            found = False
+
             for t in db_tags:
                 if t.tag_text == tag:
-                    pass                 
+                    t.notes.add(self.note)
+                    found = True
 
+            if found == False:    
+                new_tag = Tags() 
+                new_tag.tag_text = tag
+                new_tag.save()
+                new_tag.notes.add(self.note)
+                new_tag.save()
+                     
     def view_notes(self, tag_list):
         """
         This funciton takes in a list of one or more
