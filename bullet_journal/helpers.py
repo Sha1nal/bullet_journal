@@ -5,7 +5,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bullet_journal.settings")
 
 django.setup()
 
-from bj.models import Tasks, Notes_Notes, Tags, Tag_Notes
+from bj.models import Tasks, Notes_Notes, Tags
 
 class TaskHelper():
     """
@@ -58,7 +58,7 @@ class NoteHelper():
     def __init__(self):
         self.note = Notes_Notes()
  
-    def create_note(self, text, tags_list):
+    def create_note(self, text, tag_list):
         """
         This function takes a string of text that will
         form the body of the note and a list of single
@@ -70,22 +70,23 @@ class NoteHelper():
         self.note.note_text = text
         self.note.save()
 
-        for tag in tags_list:
-            """
-            get all tags in db
-            for each tag check
-                if tag_text == tag
-                    get tag_text.id
-                else
-                    create new tag
-                    save
-                create new tag_notes(note_id, tag_id)
-                save
-            """
+        for tag in tag_list:
+            db_tags = Tags.objects.all() 
+            for t in db_tags:
+                if t.tag_text == tag:
+                    pass                 
 
-    def view_note(self, tag_list):
+    def view_notes(self, tag_list):
         """
         This funciton takes in a list of one or more
         words (tags). Its out output will be a list
         of all notes associated with the words (tags). 
         """
+        final_notes = []
+        for tag in tag_list:
+            all_notes = Tags.objects.get(tag_text=tag)
+            notes = all_notes.notes.all()
+            for note in notes:
+                final_notes.append(note.note_text)
+    
+        return final_notes
