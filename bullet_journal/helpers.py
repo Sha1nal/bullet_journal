@@ -93,8 +93,9 @@ class NoteHelper():
                 new_tag.save()
                 new_tag.notes.add(self.note)
                 new_tag.save()
-                     
-    def view_notes(self, tag_list):
+
+    @staticmethod                     
+    def view_notes(tag_list):
         """
         This funciton takes in a list of one or more
         words (tags). Its out output will be a list
