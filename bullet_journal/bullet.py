@@ -13,17 +13,24 @@ from helpers import TaskHelper, NoteHelper
 def cli():
     pass
 
-@click.command('task')
-@click.option('--a', '--add', is_flag=True)
-@click.option('--v', '--view', is_flag=True)
-@click.option('--c', '--close', is_flag=True)
-def tasks(a, v, c):
-    if a:
-        click.echo('Task Add') 
-    if v:
-        click.echo('Task View')
-    if c:
-        click.echo('Task Close')
+@click.command('task_add')
+@click.argument('task_text', nargs=1, type=click.STRING, default='')
+def add_tasks(task_text):
+    TaskHelper.create_task(task_text)
+    click.echo('Task Added')
+
+@click.command('task_view')
+def view_tasks():
+    task_list = TaskHelper.view_tasks()
+    for task in task_list:
+        oneline = '{}: {}'.format(task[0], task[1])
+        click.echo(oneline)
+
+@click.command('task_close')
+@click.argument('task_id', nargs=1, type=click.INT)
+def close_tasks(task_id):
+    TaskHelper.close_task(task_id)
+    click.echo('Closed Task: ' + str(task_id))
 
 @click.command('note')
 @click.option('--a', '--add', is_flag=True)
@@ -34,7 +41,9 @@ def notes(a, v):
     if v:
         click.echo('Notes View')
 
-cli.add_command(tasks)
+cli.add_command(add_tasks)
+cli.add_command(view_tasks)
+cli.add_command(close_tasks)
 cli.add_command(notes)
 
 if __name__ == '__main__':
