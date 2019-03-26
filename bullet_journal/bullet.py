@@ -1,32 +1,28 @@
 #!/home/shainal/dev/python3/bulletJournal/venv/bin/python3
-import os
-import django
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "bullet_journal.settings")
-django.setup()
-
+import sys
+sys.path.insert(0, '/home/shainal/dev/python3/bulletJournal/bullet_journal')
 import click
 
-from bj.models import Notes_Notes, Tasks, Tags
 from helpers import TaskHelper, NoteHelper
 
 @click.group(invoke_without_command=True)
 def cli():
     pass
 
-@click.command('task_add')
+@click.command('ta')
 @click.argument('task_text', nargs=1, type=click.STRING, default='')
 def add_tasks(task_text):
     TaskHelper.create_task(task_text)
     click.echo('Task Added')
 
-@click.command('task_view')
+@click.command('tv')
 def view_tasks():
     task_list = TaskHelper.view_tasks()
     for task in task_list:
         oneline = '{}: {}'.format(task[0], task[1])
         click.echo(oneline)
 
-@click.command('task_close')
+@click.command('tc')
 @click.argument('task_id', nargs=1, type=click.INT)
 def close_tasks(task_id):
     TaskHelper.close_task(task_id)
