@@ -14,9 +14,10 @@ class TaskHelper():
     """
 
     def __init__(self):
-        self.task = Tasks()
+        pass 
 
-    def create_task(self, text):
+    @staticmethod
+    def create_task(text):
         """
         This function will create a task. 
         As inputs it will recieve a text
@@ -25,19 +26,27 @@ class TaskHelper():
         successful and a new entry in the 
         databse in the Tasks table.
         """
-        self.task.task_text = text 
-        self.task.save()
-        return True
+        new_task = Tasks(task_text=text) 
+        new_task.save()
 
-    def view_tasks(self):
+    @staticmethod
+    def view_tasks():
         """
         This function will retrieve all incomplete
         tasks from the database and return it.
         """
+        task_list = []
         incomplete_task_list = Tasks.objects.filter(is_complete=False)
-        return incomplete_task_list
+        for task in incomplete_task_list:
+            tasks = []      #create data structure
+            tasks.append(task.id)   #add ID 
+            tasks.append(task.task_text)    #add text
+            task_list.append(tasks)     #append data structure
 
-    def close_task(self, task_id):
+        return task_list
+
+    @staticmethod
+    def close_task(task_id):
         """
         This fucntion takes a 'Task_ID' as an input 
         and changes that specific task to complete
@@ -46,7 +55,6 @@ class TaskHelper():
         task = Tasks.objects.get(pk=task_id)
         task.is_complete = True
         task.save()
-        return True
 
 
 class NoteHelper():
