@@ -27,6 +27,7 @@ def view_tasks():
     Populates list with open tasks
     """
     task_list = TaskHelper.view_tasks()
+    click.echo('-----Task List-----')
     for task in task_list:
         oneline = '{}: {}'.format(task[0], task[1])
         click.echo(oneline)
